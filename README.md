@@ -39,6 +39,23 @@ Option 2 (conseille en local):
 2. Exemple si tu as Node.js: `npx serve .`
 3. Ouvre l'URL locale affichee (ex: http://localhost:3000).
 
+## Push sur GitHub
+
+1. Cree un nouveau depot vide sur GitHub (sans README).
+2. Ajoute le remote et pousse la branche principale:
+
+```bash
+git remote add origin <URL_DU_DEPOT_GITHUB>
+git push -u origin main
+```
+
+## Publication (GitHub Pages)
+
+- Le workflow GitHub Actions est deja configure dans .github/workflows/pages.yml.
+- Apres le premier push, active GitHub Pages dans les settings du repo:
+  Settings > Pages > Source = GitHub Actions.
+- Chaque push sur main publie automatiquement l'application.
+
 ## Personnaliser les questions
 
 - Edite le fichier `questions.fr.js`.
