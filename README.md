@@ -4,7 +4,7 @@ Application web simple (HTML/CSS/JS) pour t'entrainer a l'examen civique de natu
 
 ## Fonctions incluses
 
-- Mode entrainement (toutes les questions melangees)
+- Mode entrainement (250 questions par session)
 - Mode examen (40 questions, selectionnees depuis la banque)
 - Minuteur configurable: par question (30 s), par examen (35 min), ou desactive
 - Banque etendue: 100 questions organisees par theme (histoire, institutions, valeurs)
@@ -26,6 +26,7 @@ Application web simple (HTML/CSS/JS) pour t'entrainer a l'examen civique de natu
 - Mode par examen: le compteur est global, et l'examen se termine automatiquement quand le temps atteint 0.
 - Le mode examen est calibre pour 40 questions en 35 minutes avec la banque actuelle de 100 questions.
 - Le seuil de reussite est choisi avant le lancement (60/70/75%) puis affiche automatiquement sur le resultat final (score minimum a atteindre).
+- Le mode entrainement construit une session de 250 questions en reutilisant la banque de facon aleatoire.
 
 ## Lancer l'application
 
@@ -74,6 +75,12 @@ git push -u origin main
 
 - `answer` est l'index de la bonne option (0 = premiere reponse).
 - `theme` peut etre `histoire`, `institutions` ou `valeurs`.
+
+## Bouton de support PayPal
+
+- Un bouton "Soutenir le projet via PayPal" est affiche sur l'ecran d'accueil.
+- Pour utiliser ton propre compte, remplace l'URL dans `app.js` a la constante `PAYPAL_SUPPORT_URL`.
+- Tu peux mettre un lien PayPal.me ou un lien de don avec `hosted_button_id`.
 
 ## Fichiers
 

@@ -1,7 +1,9 @@
+const DEFAULT_PRACTICE_QUESTION_COUNT = 250;
 const DEFAULT_EXAM_QUESTION_COUNT = 40;
 const QUESTION_TIMER_SECONDS = 30;
 const EXAM_TIMER_SECONDS = 35 * 60;
 const DEFAULT_EXAM_PASS_PERCENT = 70;
+const PAYPAL_SUPPORT_URL = "https://www.paypal.com/donate/?hosted_button_id=38BSH6AAMPFXG";
 
 const state = {
   mode: null,
@@ -20,6 +22,7 @@ const els = {
   examBtn: document.getElementById("examBtn"),
   timerTypeSelect: document.getElementById("timerTypeSelect"),
   passThresholdSelect: document.getElementById("passThresholdSelect"),
+  paypalSupportBtn: document.getElementById("paypalSupportBtn"),
   quizPanel: document.getElementById("quizPanel"),
   resultPanel: document.getElementById("resultPanel"),
   currentIndex: document.getElementById("currentIndex"),
@@ -41,6 +44,10 @@ const els = {
 
 function getExamQuestionCount() {
   return Math.min(DEFAULT_EXAM_QUESTION_COUNT, QUESTION_BANK.length);
+}
+
+function getPracticeQuestionCount() {
+  return DEFAULT_PRACTICE_QUESTION_COUNT;
 }
 
 function getExamTimerSeconds() {
@@ -69,14 +76,35 @@ function toOfficialExplanation(item) {
   return `Reference officielle (${getThemeLabel(item.theme)}): ${normalized}`;
 }
 
-function configureExamLabels() {
+function buildPracticeQuestionSet(targetCount) {
+  if (QUESTION_BANK.length === 0 || targetCount <= 0) {
+    return [];
+  }
+
+  const questions = [];
+  while (questions.length < targetCount) {
+    questions.push(...shuffle(QUESTION_BANK));
+  }
+  return questions.slice(0, targetCount);
+}
+
+function configureModeLabels() {
+  const practiceCount = getPracticeQuestionCount();
   const examCount = getExamQuestionCount();
   const examMinutes = Math.round(getExamTimerSeconds() / 60);
+
+  els.practiceBtn.textContent = `Mode entraînement (${practiceCount} questions)`;
   els.examBtn.textContent = `Mode examen (${examCount} questions)`;
 
   const examTimerOption = els.timerTypeSelect.querySelector('option[value="exam"]');
   if (examTimerOption) {
     examTimerOption.textContent = `Par examen (${examMinutes} min)`;
+  }
+}
+
+function configureSupportLink() {
+  if (els.paypalSupportBtn) {
+    els.paypalSupportBtn.href = PAYPAL_SUPPORT_URL;
   }
 }
 
@@ -169,8 +197,12 @@ function initQuiz(mode) {
   state.answered = false;
   state.selectedAnswer = null;
 
-  const source = shuffle(QUESTION_BANK);
-  state.questions = mode === "exam" ? source.slice(0, getExamQuestionCount()) : source;
+  if (mode === "exam") {
+    const source = shuffle(QUESTION_BANK);
+    state.questions = source.slice(0, getExamQuestionCount());
+  } else {
+    state.questions = buildPracticeQuestionSet(getPracticeQuestionCount());
+  }
 
   els.scoreValue.textContent = "0";
   els.totalCount.textContent = String(state.questions.length);
@@ -340,4 +372,5 @@ els.restartBtn.addEventListener("click", () => initQuiz(state.mode || "practice"
 els.retryExamBtn.addEventListener("click", () => initQuiz("exam"));
 els.backHomeBtn.addEventListener("click", backHome);
 
-configureExamLabels();
+configureModeLabels();
+configureSupportLink();
