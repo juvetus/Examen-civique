@@ -4,15 +4,20 @@ Application web simple (HTML/CSS/JS) pour t'entrainer a l'examen civique de natu
 
 ## Fonctions incluses
 
-- Mode entrainement (250 questions par session)
+- Mode entrainement (toute la banque de questions par session)
 - Mode examen (40 questions, selectionnees depuis la banque)
+- Mode revision ciblee (Histoire/Valeurs)
+- Mode erreurs frequentes (questions les plus souvent ratees)
 - Minuteur configurable: par question (30 s), par examen (35 min), ou desactive
-- Banque etendue: 100 questions organisees par theme (histoire, institutions, valeurs)
+- Banque etendue: 350 questions organisees par theme (histoire, institutions, valeurs, geographie, culture)
 - Correction immediate avec explication
 - Explication affichee dans un ton harmonise "examen officiel"
 - Seuil de reussite configurable (60/70/75%) et affiche automatiquement en fin d examen
 - Barre de progression
 - Score en temps reel
+- Score par theme en fin de session (ex: Histoire 72%, Valeurs 64%)
+- Bloc "Progression personnelle" sur l'accueil avec tes meilleurs scores cumules par theme
+- Bouton de reinitialisation de la progression personnelle sur l'accueil
 - Historique des 5 dernieres tentatives (stocke dans le navigateur)
 
 ## Encodage
@@ -24,9 +29,13 @@ Application web simple (HTML/CSS/JS) pour t'entrainer a l'examen civique de natu
 - Tu peux choisir le type de minuteur avant de lancer le quiz.
 - Mode par question: si le temps est ecoule, la question est comptee comme ratee et tu passes a la suivante.
 - Mode par examen: le compteur est global, et l'examen se termine automatiquement quand le temps atteint 0.
-- Le mode examen est calibre pour 40 questions en 35 minutes avec la banque actuelle de 100 questions.
+- Le mode examen est calibre pour 40 questions en 35 minutes avec la banque actuelle de 350 questions.
 - Le seuil de reussite est choisi avant le lancement (60/70/75%) puis affiche automatiquement sur le resultat final (score minimum a atteindre).
-- Le mode entrainement construit une session de 250 questions en reutilisant la banque de facon aleatoire.
+- Le mode entrainement utilise toute la banque disponible (350 questions avec la base actuelle).
+- Le mode revision ciblee ne prend que les themes histoire et valeurs pour un travail dirige.
+- Le mode erreurs frequentes se base sur tes reponses precedentes et propose les questions les plus souvent ratees.
+- Le resultat final affiche aussi un score detaille par theme.
+- L'accueil affiche aussi une progression personnelle: meilleur score atteint par theme (cumul des sessions).
 
 ## Lancer l'application
 
@@ -74,7 +83,7 @@ git push -u origin main
 ```
 
 - `answer` est l'index de la bonne option (0 = premiere reponse).
-- `theme` peut etre `histoire`, `institutions` ou `valeurs`.
+- `theme` peut etre `histoire`, `institutions`, `valeurs`, `geographie` ou `culture`.
 
 ## Bouton de support PayPal
 

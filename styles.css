@@ -114,6 +114,47 @@ h1 {
   margin-top: 10px;
 }
 
+.personal-progress {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid #d9ccb2;
+  border-radius: 14px;
+  background: #fffcf5;
+}
+
+.personal-progress h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.personal-progress-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.personal-progress-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #eadfc9;
+  border-radius: 10px;
+  background: #fff;
+  padding: 8px 10px;
+}
+
+.personal-progress-label {
+  font-weight: 700;
+}
+
+.personal-progress-value {
+  font-weight: 800;
+  color: var(--brand-strong);
+}
+
 .timer-config {
   display: flex;
   align-items: center;
@@ -142,6 +183,12 @@ h1 {
   font-weight: 700;
   cursor: pointer;
   transition: transform 160ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.btn-small {
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
 }
 
 .btn:hover {

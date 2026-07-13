@@ -41,10 +41,18 @@
         </select>
       </div>
       <div class="mode-actions">
-        <button id="practiceBtn" class="btn btn-primary">Mode entraînement (250 questions)</button>
+        <button id="practiceBtn" class="btn btn-primary">Mode entraînement (toutes les questions)</button>
         <button id="examBtn" class="btn btn-outline">Mode examen (40 questions)</button>
+        <button id="targetedBtn" class="btn btn-outline">Révision ciblée (Histoire/Valeurs)</button>
+        <button id="frequentErrorsBtn" class="btn btn-outline">Erreurs fréquentes</button>
       </div>
-      <p class="hint">Le mode entraînement lance 250 questions. Le mode examen mélange les questions et donne le score final.</p>
+      <p class="hint">Le mode entraînement lance une session sur toute la banque disponible. Le mode examen mélange les questions et donne le score final. Le mode ciblé ne prend que Histoire/Valeurs. Le mode erreurs fréquentes reprend tes points faibles.</p>
+      <section id="personalProgressPanel" class="personal-progress" aria-live="polite">
+        <h3>Progression personnelle</h3>
+        <p id="personalProgressEmpty" class="hint">Aucune donnée pour l'instant. Termine une session pour voir tes meilleurs scores cumulés par thème.</p>
+        <ul id="personalProgressList" class="personal-progress-list hidden"></ul>
+        <button id="resetPersonalProgressBtn" class="btn btn-ghost btn-small" type="button">Réinitialiser la progression personnelle</button>
+      </section>
       <div class="support-actions">
         <a id="paypalSupportBtn" class="btn btn-paypal" href="#" target="_blank" rel="noopener noreferrer">Soutenir le projet via PayPal</a>
       </div>
@@ -88,6 +96,7 @@
     <section id="resultPanel" class="result-panel card hidden" aria-live="polite">
       <h2>Résultat final</h2>
       <p id="resultText" class="result-text"></p>
+      <p id="themeScoreText" class="hint"></p>
       <div class="result-actions">
         <button id="retryExamBtn" class="btn btn-primary">Relancer un examen</button>
         <button id="backHomeBtn" class="btn btn-outline">Retour accueil</button>
